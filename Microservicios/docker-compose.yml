@@ -1,0 +1,78 @@
+version: "3.9"
+
+services:
+  productos:
+    build:
+      context: . 
+      dockerfile: Dockerfile 
+    container_name: productos
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./productos:/app/productos
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql://redpizza:1234@db:5432/productos_db
+    networks:
+      - backend
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/productos"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  ofertas:
+    build:
+      context: .
+      dockerfile: Dockerfile.ofertas
+    container_name: ofertas
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./ofertas:/app/ofertas
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql://redpizza:1234@db:5432/ofertas_db
+    networks:
+      - backend
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/ofertas"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  db:
+    image: postgres:13
+    container_name: db
+    environment:
+      POSTGRES_USER: redpizza
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_MULTIPLE_DATABASES: productos_db,ofertas_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-multiple-databases.sh:/docker-entrypoint-initdb.d/init-multiple-databases.sh
+    networks:
+      - backend
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U redpizza"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  postgres_data:
