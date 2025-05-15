@@ -1,5 +1,5 @@
-from sqlalchemy import Boolean, Column, Float, Integer, String
-from productos.app.database import Base
+from sqlalchemy import Column, Integer, String, Float, Boolean
+from .database import Base
 
 class Producto(Base):
     __tablename__ = "productos"
@@ -9,4 +9,5 @@ class Producto(Base):
     descripcion = Column(String)
     precio = Column(Float)
     disponible = Column(Boolean, default=True)
-    imagen_url = Column(String, nullable=True)
+    imagen_url = Column(String)
+    tipo = Column(String)  # Nueva columna añadida

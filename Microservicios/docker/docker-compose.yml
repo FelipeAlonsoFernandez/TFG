@@ -2,9 +2,7 @@ version: "3.9"
 
 services:
   productos:
-    build:
-      context: . 
-      dockerfile: Dockerfile 
+    image: falofer0405/productos:latest
     container_name: productos
     ports:
       - "8000:8000"
@@ -26,9 +24,7 @@ services:
       start_period: 30s
 
   ofertas:
-    build:
-      context: .
-      dockerfile: Dockerfile.ofertas
+    image: falofer0405/ofertas:latest
     container_name: ofertas
     ports:
       - "8001:8000"
@@ -65,10 +61,10 @@ services:
       - "5432:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U redpizza"]
-      interval: 5s
+      interval: 10s
       timeout: 5s
       retries: 5
-      start_period: 10s
+      start_period: 30s
 
 networks:
   backend:

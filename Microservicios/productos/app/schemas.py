@@ -1,12 +1,12 @@
 from pydantic import BaseModel
-from typing import Optional
 
 class ProductoBase(BaseModel):
     nombre: str
     descripcion: str
     precio: float
     disponible: bool = True
-    imagen_url: Optional[str] = None
+    imagen_url: str
+    tipo: str
 
 class ProductoCreate(ProductoBase):
     pass
@@ -15,4 +15,4 @@ class Producto(ProductoBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
