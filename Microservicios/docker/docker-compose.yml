@@ -7,7 +7,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./productos:/app/productos
+      - ../productos:/app/productos  # Cambiado para apuntar al directorio correcto
     depends_on:
       db:
         condition: service_healthy
@@ -29,7 +29,7 @@ services:
     ports:
       - "8001:8000"
     volumes:
-      - ./ofertas:/app/ofertas
+      - ../ofertas:/app/ofertas  # Cambiado para apuntar al directorio correcto
     depends_on:
       db:
         condition: service_healthy
@@ -54,7 +54,7 @@ services:
       POSTGRES_MULTIPLE_DATABASES: productos_db,ofertas_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./init-multiple-databases.sh:/docker-entrypoint-initdb.d/init-multiple-databases.sh
+      - ../init-multiple-databases.sh:/docker-entrypoint-initdb.d/init-multiple-databases.sh
     networks:
       - backend
     ports:
