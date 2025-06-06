@@ -1,6 +1,19 @@
 #root {
-  max-width: 1440px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  max-width: 1920px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+}
+
+/* Para elementos que necesiten padding lateral */
+.content-wrapper {
+  padding: 0 2rem;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1440px;
 }

@@ -1,0 +1,239 @@
+/* Hero Section */
+.contacto-hero-section {
+  width: 100%;
+  height: 50vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                    url('../assets/redpizza-background-outside.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contacto-hero-content {
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+.contacto-hero-logo {
+  width: 400px;
+  height: auto;
+  margin-right: 15px;
+  filter: drop-shadow(0 0 10px rgba(0,0,0,0.3));
+}
+
+.contacto-hero-content h1 {
+  font-size: 4rem;
+  margin-top: 50px;
+  margin-left: 20px;
+}
+
+.contacto-hero-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  margin-left: 220px;
+}
+
+/* Contact Section */
+.contacto-section {
+    padding: 60px 20px;
+    background-color: #FFF6E6;
+}
+
+.contacto-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contacto-container h2 {
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.contacto-container p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.contacto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contacto-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.contacto-form-group input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.contacto-form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    min-height: 150px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.contacto-form-group input:focus,
+.contacto-form-group textarea:focus {
+    border-color: #ED8023;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(237, 128, 35, 0.1);
+}
+
+.contacto-checkbox-group {
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 10px;
+    max-width: 335px;
+}
+
+.contacto-checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    accent-color: #ED8023;
+    cursor: pointer;
+}
+
+.contacto-checkbox-group label {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+.contacto-submit-button {
+    background-color: #ED8023;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: center;
+}
+
+.contacto-submit-button:hover {
+    background-color: #d16b15;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(237, 128, 35, 0.3);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .contacto-container {
+        padding: 20px;
+    }
+
+    .contacto-container h2 {
+        font-size: 2rem;
+    }
+
+    .contacto-form-group input,
+    .contacto-form-group textarea {
+        padding: 10px;
+    }
+
+    .contacto-hero-content h2 {
+        margin-left: 0;
+        font-size: 1.5rem;
+    }
+
+    .contacto-hero-logo {
+        width: 300px;
+    }
+}
+
+@media (max-width: 450px) {
+    .contacto-hero-section {
+        height: auto;
+        min-height: 93vh;
+    }
+
+    .contacto-section {
+        padding: 30px 10px;
+    }
+
+    .contacto-container h2 {
+        font-size: 1.8rem;
+    }
+
+    .contacto-container p {
+        font-size: 14px;
+    }
+
+    .contacto-form-group textarea {
+        min-height: 120px;
+    }
+
+    .contacto-checkbox-group {
+        gap: 8px;
+    }
+
+    .contacto-checkbox-group label {
+        font-size: 13px;
+    }
+
+    .contacto-submit-button {
+        width: 100%;
+    }
+
+    .contacto-hero-logo {
+        width: 250px;
+    }
+}
+
+@media (max-width: 340px) {
+    .contacto-hero-section {
+        width: 100vw;
+        overflow-x: hidden;
+    }
+
+    .contacto-section {
+        width: 100%;
+        padding: 20px 0;
+        overflow-x: hidden;
+    }
+
+    .contacto-container {
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .contacto-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .contacto-hero-logo {
+        width: 200px;
+    }
+
+    .contacto-hero-content h1 {
+        font-size: 2.5rem;
+    }
+}

@@ -4,10 +4,11 @@ services:
   productos:
     image: falofer0405/productos:latest
     container_name: productos
+    restart: always
     ports:
       - "8000:8000"
     volumes:
-      - ../productos:/app/productos  # Cambiado para apuntar al directorio correcto
+      - ../productos:/app/productos 
     depends_on:
       db:
         condition: service_healthy
@@ -23,31 +24,10 @@ services:
       retries: 5
       start_period: 30s
 
-  ofertas:
-    image: falofer0405/ofertas:latest
-    container_name: ofertas
-    ports:
-      - "8001:8000"
-    volumes:
-      - ../ofertas:/app/ofertas  # Cambiado para apuntar al directorio correcto
-    depends_on:
-      db:
-        condition: service_healthy
-    environment:
-      - DATABASE_URL=postgresql://redpizza:1234@db:5432/ofertas_db
-    networks:
-      - backend
-    restart: always
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8001/ofertas"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-      start_period: 30s
-
   db:
     image: postgres:13
     container_name: db
+    restart: always
     environment:
       POSTGRES_USER: redpizza
       POSTGRES_PASSWORD: 1234
